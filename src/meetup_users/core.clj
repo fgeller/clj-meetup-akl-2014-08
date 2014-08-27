@@ -9,10 +9,19 @@
    [ring.adapter.jetty :refer [run-jetty]]))
 
 (def datomic-uri "datomic:mem://users")
-(def schema-tx [])
+(def schema-txs [{:db/id #db/id[:db.part/db]
+                  :db/ident :user/id
+                  :db/valueType :db.type/long
+                  :db/cardinality :db.cardinality/one
+                  :db.install/_attribute :db.part/db},
+                 {:db/id #db/id[:db.part/db]
+                  :db/ident :user/nick
+                  :db/valueType :db.type/string
+                  :db/cardinality :db.cardinality/one
+                  :db.install/_attribute :db.part/db}])
 (defn setup-database []
   (peer/create-database datomic-uri)
-  @(peer/transact (peer/connect datomic-uri) schema-tx))
+  @(peer/transact (peer/connect datomic-uri) schema-txs))
 (defn delete-database []
   (peer/delete-database datomic-uri))
 (defn read-database []
@@ -20,7 +29,31 @@
 
 (setup-database)
 
-(defresource users-resource)
+(defn find-all-users [database]
+  (peer/q '[:find ?u :where [?u :user/id ?i]] database))
+
+(defn all-users [database]
+  (into {}
+        (map (fn [[entity-id]]
+               (let [entity (peer/entity database entity-id)]
+                 {(:user/id entity) {:nick (:user/nick entity)}}))
+             (find-all-users database))))
+
+(defn add-user [database data]
+  (let [new-id (+ 1 (count (find-all-users database)))
+        user-tx {:db/id (peer/tempid :db.part/user) :user/nick (get data "nick") :user/id new-id}]
+    (peer/transact (peer/connect datomic-uri) [user-tx])))
+
+(defresource users-resource
+  :available-media-types ["application/json"]
+  :handle-exception (fn [context] (println "EX:" (:exception context)))
+  :allowed-methods [:get :post]
+  :post! (fn [context]
+           (let [body (slurp (io/reader (get-in context [:request :body])))
+                 body-json (json/read-str body)]
+             (add-user (read-database) body-json)))
+  :handle-ok (fn [context]
+               (all-users (read-database))))
 
 (defroutes app-routes (ANY "/users" [] users-resource))
 
