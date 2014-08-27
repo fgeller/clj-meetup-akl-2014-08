@@ -29,33 +29,31 @@
 
 #_(setup-database)
 
-
 #_(defn find-all-users [database]
-    (peer/q '[:find ?u :where [?u :user/id]] database))
+    (peer/q '[:find ?u :where [?u :user/id ?i]] database))
 
-#_(defn all-users [database]
-    (into {}
-          (map (fn [[entity-id]]
-                 (let [entity (peer/entity database entity-id)]
-                   {(:user/id entity) {:nick (:user/nick entity)}}))
-               (find-all-users database))))
+(defn all-users [database]
+  (into {}
+        (map (fn [[entity-id]]
+               (let [entity (peer/entity database entity-id)]
+                 {(:user/id entity) {:nick (:user/nick entity)}}))
+             (find-all-users database))))
 
 #_(defn add-user [database data]
     (let [new-id (+ 1 (count (find-all-users database)))
-          user-tx {:db/id (peer/tempid :db.part/user) :user/id new-id :user/nick (get data "nick")}]
-      @(peer/transact (peer/connect datomic-uri) [user-tx])
-      new-id))
+          user-tx {:db/id (peer/tempid :db.part/user) :user/nick (get data "nick") :user/id new-id}]
+      (peer/transact (peer/connect datomic-uri) [user-tx])))
 
 #_(defresource users-resource
     :available-media-types ["application/json"]
+    :handle-exception (fn [context] (println "EX:" (:exception context)))
     :allowed-methods [:get :post]
-    :malformed? (fn [context]
-                  (when (= :post (get-in context [:request :request-method]))
-                    (let [body (slurp (io/reader (get-in context [:request :body])))]
-                      [false {::data (json/read-str body)}])))
     :post! (fn [context]
-             (add-user (read-database) (::data context)))
-    :handle-ok (fn [_] (all-users (read-database))))
+             (let [body (slurp (io/reader (get-in context [:request :body])))
+                   body-json (json/read-str body)]
+               (add-user (read-database) body-json)))
+    :handle-ok (fn [context]
+                 (all-users (read-database))))
 
 #_(defroutes app-routes (ANY "/users" [] users-resource))
 
