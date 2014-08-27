@@ -30,7 +30,7 @@
 #_(setup-database)
 
 #_(defn find-all-users [database]
-    (peer/q '[:find ?u :where [?u :user/id ?i]] database))
+    (peer/q '[:find ?u :where [?u :user/id]] database))
 
 (defn all-users [database]
   (into {}
