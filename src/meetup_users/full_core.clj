@@ -32,28 +32,30 @@
 #_(defn find-all-users [database]
     (peer/q '[:find ?u :where [?u :user/id]] database))
 
-(defn all-users [database]
-  (into {}
-        (map (fn [[entity-id]]
-               (let [entity (peer/entity database entity-id)]
-                 {(:user/id entity) {:nick (:user/nick entity)}}))
-             (find-all-users database))))
-
 #_(defn add-user [database data]
     (let [new-id (+ 1 (count (find-all-users database)))
-          user-tx {:db/id (peer/tempid :db.part/user) :user/nick (get data "nick") :user/id new-id}]
-      (peer/transact (peer/connect datomic-uri) [user-tx])))
+          user-tx {:db/id (peer/tempid :db.part/user)
+                   :user/id new-id
+                   :user/nick (get data "nick")}]
+      @(peer/transact (peer/connect datomic-uri) [user-tx])))
 
 #_(defresource users-resource
     :available-media-types ["application/json"]
-    :handle-exception (fn [context] (println "EX:" (:exception context)))
     :allowed-methods [:get :post]
+    :handle-exception (fn [context]
+                        (println "EX:" (:exception context)))
     :post! (fn [context]
-             (let [body (slurp (io/reader (get-in context [:request :body])))
-                   body-json (json/read-str body)]
-               (add-user (read-database) body-json)))
+             (let [body (json/read-str (slurp (get-in context [:request :body])))]
+               (add-user (read-database) body)))
     :handle-ok (fn [context]
-                 (all-users (read-database))))
+                 (let [database (read-database)
+                       entity-ids (find-all-users database)
+                       entities (map (fn [[entity-id]] (peer/entity database entity-id))
+                                     entity-ids)
+                       users (map (fn [entity] {(:user/id entity) {:nick (:user/nick entity)}})
+                                  entities)]
+                   (into {} users))))
+
 
 #_(defroutes app-routes (ANY "/users" [] users-resource))
 
