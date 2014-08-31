@@ -1,0 +1,1159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Clojure meetup 08-2014</title>
+<!-- 2014-08-28 Thu 09:36 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Felix Geller" />
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato">
+<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:100,400,600">
+   <style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  body    { font-family: Lato, Verdana, sans-serif; background-color: #fff; }
+  h1.title { font-family: 'Raleway'; font-size: 29pt; font-weight: 100; color: #34495e }
+  h2      { font-family: 'Raleway'; font-size: 22pt; font-weight: 100; color: #34495e }
+  a { color: #2980b9; text-decoration: none; padding: 0.25em; }
+  a:hover { color: #ecf0f1; background-color: #2980b9; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Clojure meetup 08-2014</h1>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Disclaimer</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Not a Clojure expert, by no means.
+</li>
+<li>Keen to learn. Always.
+</li>
+<li>Try new things ⤇ influences everything else.
+
+<p>
+<img src="./github.png" alt="github.png" />  <a href="https://github.com/fgeller">https://github.com/fgeller</a>
+</p>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">What: Cauda</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Queue for song requests
+</li>
+<li>Requests are per user
+</li>
+<li>Enable veto'ing of songs
+</li>
+<li><a href="https://github.com/fgeller/cauda">https://github.com/fgeller/cauda</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Example: User management</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+RESTful resource:
+</p>
+
+<ul class="org-ul">
+<li>GET /users
+</li>
+<li>POST /users
+</li>
+<li>JSON
+</li>
+<li><a href="https://github.com/fgeller/clj-meetup-akl-2014-08">https://github.com/fgeller/clj-meetup-akl-2014-08</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Tech</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<img src="./250px-Clojure-Logo.png" alt="250px-Clojure-Logo.png" />  <img src="./2023491.png" alt="2023491.png" />  <img src="./logo-clean.png" alt="logo-clean.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Start!</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">ns</span> <span style="color: #2492db;">meetup-users.core</span>
+  (<span style="color: #e67e22;">:require</span>
+   [<span style="color: #2492db;">clojure.data.json</span> <span style="color: #e67e22;">:as</span> json]
+   [<span style="color: #2492db;">clojure.java.io</span> <span style="color: #e67e22;">:as</span> io]
+   [<span style="color: #2492db;">datomic.api</span> <span style="color: #e67e22;">:only</span> [q db] <span style="color: #e67e22;">:as</span> peer]
+   [<span style="color: #2492db;">liberator.core</span> <span style="color: #e67e22;">:refer</span> [resource defresource]]
+   [<span style="color: #2492db;">liberator.dev</span> <span style="color: #e67e22;">:refer</span> [wrap-trace]]
+   [<span style="color: #2492db;">compojure.core</span> <span style="color: #e67e22;">:refer</span> [defroutes <span style="color: #e67e22;">ANY</span>]]
+   [<span style="color: #2492db;">ring.adapter.jetty</span> <span style="color: #e67e22;">:refer</span> [run-jetty]]))
+
+(<span style="color: #d98c10;">def</span> <span style="color: #8e44ad;">datomic-uri</span> <span style="color: #7f8c8d;">"datomic:mem://users"</span>)
+(<span style="color: #d98c10;">def</span> <span style="color: #8e44ad;">schema-txs</span> [{<span style="color: #e67e22;">:db/id</span> #<span style="color: #2492db;">db</span>/id[<span style="color: #e67e22;">:db.part/db</span>]
+                  <span style="color: #e67e22;">:db/ident</span> <span style="color: #e67e22;">:user/id</span>
+                  <span style="color: #e67e22;">:db/valueType</span> <span style="color: #e67e22;">:db.type/long</span>
+                  <span style="color: #e67e22;">:db/cardinality</span> <span style="color: #e67e22;">:db.cardinality/one</span>
+                  <span style="color: #e67e22;">:db.install/_attribute</span> <span style="color: #e67e22;">:db.part/db</span>},
+                 {<span style="color: #e67e22;">:db/id</span> #<span style="color: #2492db;">db</span>/id[<span style="color: #e67e22;">:db.part/db</span>]
+                  <span style="color: #e67e22;">:db/ident</span> <span style="color: #e67e22;">:user/nick</span>
+                  <span style="color: #e67e22;">:db/valueType</span> <span style="color: #e67e22;">:db.type/string</span>
+                  <span style="color: #e67e22;">:db/cardinality</span> <span style="color: #e67e22;">:db.cardinality/one</span>
+                  <span style="color: #e67e22;">:db.install/_attribute</span> <span style="color: #e67e22;">:db.part/db</span>}])
+
+(<span style="color: #d98c10;">defn</span> <span style="color: #2492db;">setup-database</span> []
+  (<span style="color: #2492db;">peer</span>/create-database datomic-uri)
+  @(<span style="color: #2492db;">peer</span>/transact (<span style="color: #2492db;">peer</span>/connect datomic-uri) schema-txs))
+(<span style="color: #d98c10;">defn</span> <span style="color: #2492db;">delete-database</span> []
+  (<span style="color: #2492db;">peer</span>/delete-database datomic-uri))
+(<span style="color: #d98c10;">defn</span> <span style="color: #2492db;">read-database</span> []
+  (<span style="color: #2492db;">peer</span>/db (<span style="color: #2492db;">peer</span>/connect datomic-uri)))
+
+(setup-database)
+
+(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>)
+
+(<span style="color: #d98c10;">defroutes</span> <span style="color: #2492db;">app-routes</span> (<span style="color: #e67e22;">ANY</span> <span style="color: #0a74b9;">"/users"</span> [] users-resource))
+
+(<span style="color: #d98c10;">def</span> <span style="color: #8e44ad;">handlers</span> (wrap-trace app-routes <span style="color: #e67e22;">:header</span> <span style="color: #e67e22;">:ui</span>))
+
+(<span style="color: #d98c10;">defn</span> <span style="color: #2492db;">boot</span> [port] (run-jetty #'handlers {<span style="color: #e67e22;">:port</span> port <span style="color: #e67e22;">:join?</span> <span style="color: #e67e22;">false</span>}))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+
+FAIL "listing users" at (core_test.clj:15)
+    Expected: "{}"
+      Actual: "OK"
+
+FAIL "adding and listing a user" at (core_test.clj:21)
+    Expected: 201
+      Actual: 405
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "OK"
+FAILURE: 3 checks failed.  (But 2 succeeded.)
+[Completed at 09:05:04]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Install basic OK handler</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context] {}))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+
+FAIL "listing users" at (core_test.clj:14)
+    Expected: 200
+      Actual: 500
+
+FAIL "listing users" at (core_test.clj:15)
+    Expected: "{}"
+      Actual: "Internal server error."
+
+FAIL "adding and listing a user" at (core_test.clj:21)
+    Expected: 201
+      Actual: 405
+
+FAIL "adding and listing a user" at (core_test.clj:24)
+    Expected: 200
+      Actual: 500
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "Internal server error."
+FAILURE: 5 checks failed.
+[Completed at 09:06:42]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">What's going on?</h2>
+<div class="outline-text-2" id="text-7">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(boot 2022)
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">  curl -vv -XGET http://localhost:2022/users
+&gt; GET /users HTTP/1.1
+&gt; User-Agent: curl/7.30.0
+&gt; Host: localhost:2022
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 406 Not Acceptable
+&lt; Date: Wed, 27 Aug 2014 19:52:10 GMT
+&lt; X-Liberator-Trace: :decision (:service-available? true)
+&lt; X-Liberator-Trace: :decision (:known-method? :get)
+&lt; X-Liberator-Trace: :decision (:uri-too-long? false)
+&lt; X-Liberator-Trace: :decision (:method-allowed? :get)
+&lt; X-Liberator-Trace: :decision (:malformed? false)
+&lt; X-Liberator-Trace: :decision (:authorized? true)
+&lt; X-Liberator-Trace: :decision (:allowed? true)
+&lt; X-Liberator-Trace: :decision (:valid-content-header? true)
+&lt; X-Liberator-Trace: :decision (:known-content-type? true)
+&lt; X-Liberator-Trace: :decision (:valid-entity-length? true)
+&lt; X-Liberator-Trace: :decision (:is-options? false)
+&lt; X-Liberator-Trace: :decision (:accept-exists? true)
+&lt; X-Liberator-Trace: :decision (:media-type-available? nil)
+&lt; X-Liberator-Trace: :handler (:handle-not-acceptable "(default implementation)")
+&lt; Link: &lt;//x-liberator/requests/yjz7a&gt;; rel=x-liberator-trace
+&lt; X-Liberator-Trace-Id: yjz7a
+&lt; Content-Type: text/plain;charset=ISO-8859-1
+&lt; Content-Length: 33
+&lt; Server: Jetty(7.6.8.v20121106)
+&lt;
+No acceptable resource available.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Let's make it available</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context] {}))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">curl -vv -XGET http://localhost:2022/users
+&gt; GET /users HTTP/1.1
+&gt; User-Agent: curl/7.30.0
+&gt; Host: localhost:2022
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; Date: Wed, 27 Aug 2014 19:52:44 GMT
+&lt; X-Liberator-Trace: :decision (:service-available? true)
+&lt; X-Liberator-Trace: :decision (:known-method? :get)
+&lt; X-Liberator-Trace: :decision (:uri-too-long? false)
+&lt; X-Liberator-Trace: :decision (:method-allowed? :get)
+&lt; X-Liberator-Trace: :decision (:malformed? false)
+&lt; X-Liberator-Trace: :decision (:authorized? true)
+&lt; X-Liberator-Trace: :decision (:allowed? true)
+&lt; X-Liberator-Trace: :decision (:valid-content-header? true)
+&lt; X-Liberator-Trace: :decision (:known-content-type? true)
+&lt; X-Liberator-Trace: :decision (:valid-entity-length? true)
+&lt; X-Liberator-Trace: :decision (:is-options? false)
+&lt; X-Liberator-Trace: :decision (:accept-exists? true)
+&lt; X-Liberator-Trace: :decision (:media-type-available? {:representation {:media-type "application/json"}})
+&lt; X-Liberator-Trace: :decision (:accept-language-exists? nil)
+&lt; X-Liberator-Trace: :decision (:accept-charset-exists? nil)
+&lt; X-Liberator-Trace: :decision (:accept-encoding-exists? nil)
+&lt; X-Liberator-Trace: :decision (:processable? true)
+&lt; X-Liberator-Trace: :decision (:exists? true)
+&lt; X-Liberator-Trace: :decision (:if-match-exists? nil)
+&lt; X-Liberator-Trace: :decision (:if-unmodified-since-exists? nil)
+&lt; X-Liberator-Trace: :decision (:if-none-match-exists? nil)
+&lt; X-Liberator-Trace: :decision (:if-modified-since-exists? nil)
+&lt; X-Liberator-Trace: :decision (:method-delete? false)
+&lt; X-Liberator-Trace: :decision (:method-patch? false)
+&lt; X-Liberator-Trace: :decision (:post-to-existing? false)
+&lt; X-Liberator-Trace: :decision (:put-to-existing? false)
+&lt; X-Liberator-Trace: :decision (:multiple-representations? false)
+&lt; X-Liberator-Trace: :handler (:handle-ok)
+&lt; Link: &lt;//x-liberator/requests/3g13o&gt;; rel=x-liberator-trace
+&lt; X-Liberator-Trace-Id: 3g13o
+&lt; Vary: Accept
+&lt; Content-Type: application/json;charset=UTF-8
+&lt; Content-Length: 2
+&lt; Server: Jetty(7.6.8.v20121106)
+&lt;
+{}
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+
+FAIL "adding and listing a user" at (core_test.clj:21)
+    Expected: 201
+      Actual: 405
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 2 checks failed.  (But 3 succeeded.)
+[Completed at 07:54:07]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">POST is next.</h2>
+<div class="outline-text-2" id="text-9">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:post!</span> (<span style="color: #d98c10;">fn</span> [context]
+           (println context))
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context] {}))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+
+FAIL "adding and listing a user" at (core_test.clj:21)
+    Expected: 201
+      Actual: 405
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 2 checks failed.  (But 3 succeeded.)
+[Completed at 07:57:33]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">What, again?</h2>
+<div class="outline-text-2" id="text-10">
+<div class="org-src-container">
+
+<pre class="src src-text">curl -vv -XPOST -H'Content-type: application/json' -d'{"nick": "hans"}' http://localhost:2022/users
+&gt; POST /users HTTP/1.1
+&gt; User-Agent: curl/7.30.0
+&gt; Host: localhost:2022
+&gt; Accept: */*
+&gt; Content-type: application/json
+&gt; Content-Length: 16
+&gt;
+&lt; HTTP/1.1 405 Method Not Allowed
+&lt; Date: Wed, 27 Aug 2014 19:59:06 GMT
+&lt; X-Liberator-Trace: :decision (:service-available? true)
+&lt; X-Liberator-Trace: :decision (:known-method? :post)
+&lt; X-Liberator-Trace: :decision (:uri-too-long? false)
+&lt; X-Liberator-Trace: :decision (:method-allowed? nil)
+&lt; X-Liberator-Trace: :handler (:handle-method-not-allowed "(default implementation)")
+&lt; Link: &lt;//x-liberator/requests/trx8c&gt;; rel=x-liberator-trace
+&lt; X-Liberator-Trace-Id: trx8c
+&lt; Allow: GET, HEAD
+&lt; Content-Type: text/plain;charset=ISO-8859-1
+&lt; Content-Length: 19
+&lt; Server: Jetty(7.6.8.v20121106)
+&lt;
+Method not allowed.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Ok, let's allow it.</h2>
+<div class="outline-text-2" id="text-11">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:allowed-methods</span> [<span style="color: #e67e22;">:get</span> <span style="color: #e67e22;">:post</span>]
+  <span style="color: #e67e22;">:post!</span> (<span style="color: #d98c10;">fn</span> [context]
+           (println context))
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context] {}))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+{:request {:remote-addr localhost, :params {}, :route-params {}, :headers {content-length 16, content-type application/json, host localhost}, :server-port 80, :content-length 16, :content-type application/json, :uri /users, :server-name localhost, :query-string nil, :body #&lt;ByteArrayInputStream java.io.ByteArrayInputStream@44cd09b3&gt;, :scheme :http, :request-method :post}, :resource {:existed? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@5742fe0d&gt;, :conflict? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@6f35343c&gt;, :handle-see-other #&lt;core$handle_moved liberator.core$handle_moved@37b48b2c&gt;, :handle-moved-temporarily #&lt;core$handle_moved liberator.core$handle_moved@37b48b2c&gt;, :allowed? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@2e1d1246&gt;, :malformed? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@769ac950&gt;, :available-languages #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@2c16e005&gt;, :moved-temporarily? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@11cd7ee0&gt;, :processable? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@4a44ad41&gt;, :can-put-to-missing? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@62caac7e&gt;, :post! #&lt;core$fn__13723 meetup_users.core$fn__13723@a339c84&gt;, :valid-entity-length? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@4268a357&gt;, :patch-content-types #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@63bbc6d0&gt;, :handle-moved-permanently #&lt;core$handle_moved liberator.core$handle_moved@37b48b2c&gt;, :known-methods #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@3cf9b4d7&gt;, :known-method? #&lt;core$test_request_method$fn__12535 liberator.core$test_request_method$fn__12535@1dcb3890&gt;, :can-post-to-missing? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@8ee8538&gt;, :service-available? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@636c241c&gt;, :post-redirect? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@50b6dd42&gt;, :handle-ok #&lt;core$fn__13725 meetup_users.core$fn__13725@a1131af&gt;, :authorized? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@6ed4dd52&gt;, :available-media-types #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@590e6b56&gt;, :allowed-methods #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@41a908c7&gt;, :available-charsets #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@407f627e&gt;, :multiple-representations? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@6b1b5f46&gt;, :delete-enacted? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@520c2399&gt;, :as-response #&lt;representation$eval11973$fn__11974$G__11964__11981 liberator.representation$eval11973$fn__11974$G__11964__11981@5a2f038f&gt;, :exists? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@4492cf8a&gt;, :delete! #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@2779032&gt;, :method-allowed? #&lt;core$test_request_method$fn__12535 liberator.core$test_request_method$fn__12535@779bc3e1&gt;, :put! #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@13592620&gt;, :moved-permanently? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@41d608cc&gt;, :put-to-different-url? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@4adbaad8&gt;, :respond-with-entity? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@1bad714d&gt;, :valid-content-header? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@17e9846d&gt;, :uri-too-long? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@63f51c5e&gt;, :new? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@71199296&gt;, :patch! #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@45e6efdc&gt;, :available-encodings #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@3c8d785e&gt;, :known-content-type? #&lt;core$constantly$fn__4085 clojure.core$constantly$fn__4085@6bd98260&gt;}, :representation {:media-type application/json}}
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 1 check failed.  (But 4 succeeded.)
+[Completed at 07:59:41]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">Slurp it in!</h2>
+<div class="outline-text-2" id="text-12">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:allowed-methods</span> [<span style="color: #e67e22;">:get</span> <span style="color: #e67e22;">:post</span>]
+  <span style="color: #e67e22;">:post!</span> (<span style="color: #d98c10;">fn</span> [context]
+           (<span style="color: #d98c10;">let</span> [body (slurp (get-in context [<span style="color: #e67e22;">:request</span> <span style="color: #e67e22;">:body</span>]))]
+             (println body)))
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context] {}))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+{"nick": "hans"}
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 1 check failed.  (But 4 succeeded.)
+[Completed at 08:01:11]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">Deserialize the JSON</h2>
+<div class="outline-text-2" id="text-13">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:allowed-methods</span> [<span style="color: #e67e22;">:get</span> <span style="color: #e67e22;">:post</span>]
+  <span style="color: #e67e22;">:post!</span> (<span style="color: #d98c10;">fn</span> [context]
+           (<span style="color: #d98c10;">let</span> [body (<span style="color: #2492db;">json</span>/read-str (slurp (get-in context [<span style="color: #e67e22;">:request</span> <span style="color: #e67e22;">:body</span>])))]
+             (println body)))
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context] {}))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+{nick hans}
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 1 check failed.  (But 4 succeeded.)
+[Completed at 08:02:29]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-14" class="outline-2">
+<h2 id="sec-14">Let's add the user to the database</h2>
+<div class="outline-text-2" id="text-14">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defn</span> <span style="color: #2492db;">add-user</span> [database data]
+  (println database))
+
+(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:allowed-methods</span> [<span style="color: #e67e22;">:get</span> <span style="color: #e67e22;">:post</span>]
+  <span style="color: #e67e22;">:post!</span> (<span style="color: #d98c10;">fn</span> [context]
+           (<span style="color: #d98c10;">let</span> [body (<span style="color: #2492db;">json</span>/read-str (slurp (get-in context [<span style="color: #e67e22;">:request</span> <span style="color: #e67e22;">:body</span>])))]
+             (add-user (read-database) body)))
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context] {}))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+datomic.db.Db@dc5e4c35
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 1 check failed.  (But 4 succeeded.)
+[Completed at 08:03:30]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15">Generate a new ID</h2>
+<div class="outline-text-2" id="text-15">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defn</span> <span style="color: #2492db;">find-all-users</span> [database]
+  (<span style="color: #2492db;">peer</span>/q '[<span style="color: #e67e22;">:find</span> ?u <span style="color: #e67e22;">:where</span> [?u <span style="color: #e67e22;">:user/id</span>]] database))
+
+(<span style="color: #d98c10;">defn</span> <span style="color: #2492db;">add-user</span> [database data]
+  (<span style="color: #d98c10;">let</span> [new-id (+ 1 (count (find-all-users database)))]
+    (println <span style="color: #0a74b9;">"new-id"</span> new-id)))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+new-id 1
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 1 check failed.  (But 4 succeeded.)
+[Completed at 08:06:06]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16">Create a transaction to add the user</h2>
+<div class="outline-text-2" id="text-16">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defn</span> <span style="color: #2492db;">add-user</span> [database data]
+  (<span style="color: #d98c10;">let</span> [new-id (+ 1 (count (find-all-users database)))
+        user-tx {<span style="color: #e67e22;">:db/id</span> (<span style="color: #2492db;">peer</span>/tempid <span style="color: #e67e22;">:db.part/user</span>)
+                 <span style="color: #e67e22;">:user/id</span> new-id
+                 <span style="color: #e67e22;">:user/nick</span> (get data <span style="color: #0a74b9;">"nick"</span>)}]
+    (println user-tx)))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+{:db/id #db/id[:db.part/user -1000043], :user/id 1, :user/nick hans}
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 1 check failed.  (But 4 succeeded.)
+[Completed at 08:08:16]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17">Transact!</h2>
+<div class="outline-text-2" id="text-17">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defn</span> <span style="color: #2492db;">add-user</span> [database data]
+  (<span style="color: #d98c10;">let</span> [new-id (+ 1 (count (find-all-users database)))
+        user-tx {<span style="color: #e67e22;">:db/id</span> (<span style="color: #2492db;">peer</span>/tempid <span style="color: #e67e22;">:db.part/user</span>)
+                 <span style="color: #e67e22;">:user/id</span> new-id
+                 <span style="color: #e67e22;">:user/nick</span> (get data <span style="color: #0a74b9;">"nick"</span>)}]
+    (println
+     (<span style="color: #2492db;">peer</span>/transact (<span style="color: #2492db;">peer</span>/connect datomic-uri) [user-tx]))))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+#&lt;promise$settable_future$reify__7@ddf072f: {:db-before datomic.db.Db@2dc4557e, :db-after datomic.db.Db@1a8fa010, :tx-data #&lt;ArrayList [datomic.db.Datum@f50c66ce, datomic.db.Datum@be9582b7, datomic.db.Datum@68a2cb03]&gt;, :tempids {-9223350046623220340 17592186045418}}&gt;
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 1 check failed.  (But 4 succeeded.)
+[Completed at 08:10:08]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-18" class="outline-2">
+<h2 id="sec-18">Let's wait&#x2026;</h2>
+<div class="outline-text-2" id="text-18">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defn</span> <span style="color: #2492db;">add-user</span> [database data]
+  (<span style="color: #d98c10;">let</span> [new-id (+ 1 (count (find-all-users database)))
+        user-tx {<span style="color: #e67e22;">:db/id</span> (<span style="color: #2492db;">peer</span>/tempid <span style="color: #e67e22;">:db.part/user</span>)
+                 <span style="color: #e67e22;">:user/id</span> new-id
+                 <span style="color: #e67e22;">:user/nick</span> (get data <span style="color: #0a74b9;">"nick"</span>)}]
+    (println
+     @(<span style="color: #2492db;">peer</span>/transact (<span style="color: #2492db;">peer</span>/connect datomic-uri) [user-tx]))))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">{:db-before datomic.db.Db@d82a795a, :db-after datomic.db.Db@d4f34870, :tx-data #&lt;ArrayList [datomic.db.Datum@f50decd6, datomic.db.Datum@be9582b7, datomic.db.Datum@68a2cb03]&gt;, :tempids {-9223350046623220343 17592186045418}}
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 1 check failed.  (But 4 succeeded.)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-19" class="outline-2">
+<h2 id="sec-19">Actually look for users&#x2026;</h2>
+<div class="outline-text-2" id="text-19">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:allowed-methods</span> [<span style="color: #e67e22;">:get</span> <span style="color: #e67e22;">:post</span>]
+  <span style="color: #e67e22;">:post!</span> (<span style="color: #d98c10;">fn</span> [context]
+           (<span style="color: #d98c10;">let</span> [body (<span style="color: #2492db;">json</span>/read-str (slurp (get-in context [<span style="color: #e67e22;">:request</span> <span style="color: #e67e22;">:body</span>])))]
+             (add-user (read-database) body)))
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context]
+               (find-all-users (read-database))))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+
+FAIL "listing users" at (core_test.clj:14)
+    Expected: 200
+      Actual: 500
+
+FAIL "listing users" at (core_test.clj:15)
+    Expected: "{}"
+      Actual: "Internal server error."
+{:db-before datomic.db.Db@74ea23c8, :db-after datomic.db.Db@b9bf4286, :tx-data #&lt;ArrayList [datomic.db.Datum@f502e001, datomic.db.Datum@be9582b7, datomic.db.Datum@68a2cb03]&gt;, :tempids {-9223350046623220346 17592186045418}}
+
+FAIL "adding and listing a user" at (core_test.clj:24)
+    Expected: 200
+      Actual: 500
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "Internal server error."
+FAILURE: 4 checks failed.  (But 1 succeeded.)
+[Completed at 08:11:45]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-20" class="outline-2">
+<h2 id="sec-20">What's going on?</h2>
+<div class="outline-text-2" id="text-20">
+<div class="org-src-container">
+
+<pre class="src src-text">curl -vv -XGET http://localhost:2022/users
+&gt; GET /users HTTP/1.1
+&gt; User-Agent: curl/7.30.0
+&gt; Host: localhost:2022
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 500 Server Error
+&lt; Date: Wed, 27 Aug 2014 20:12:44 GMT
+&lt; X-Liberator-Trace: :decision (:service-available? true)
+&lt; X-Liberator-Trace: :decision (:known-method? :get)
+&lt; X-Liberator-Trace: :decision (:uri-too-long? false)
+&lt; X-Liberator-Trace: :decision (:method-allowed? :get)
+&lt; X-Liberator-Trace: :decision (:malformed? false)
+&lt; X-Liberator-Trace: :decision (:authorized? true)
+&lt; X-Liberator-Trace: :decision (:allowed? true)
+&lt; X-Liberator-Trace: :decision (:valid-content-header? true)
+&lt; X-Liberator-Trace: :decision (:known-content-type? true)
+&lt; X-Liberator-Trace: :decision (:valid-entity-length? true)
+&lt; X-Liberator-Trace: :decision (:is-options? false)
+&lt; X-Liberator-Trace: :decision (:accept-exists? true)
+&lt; X-Liberator-Trace: :decision (:media-type-available? {:representation {:media-type "application/json"}})
+&lt; X-Liberator-Trace: :decision (:accept-language-exists? nil)
+&lt; X-Liberator-Trace: :decision (:accept-charset-exists? nil)
+&lt; X-Liberator-Trace: :decision (:accept-encoding-exists? nil)
+&lt; X-Liberator-Trace: :decision (:processable? true)
+&lt; X-Liberator-Trace: :decision (:exists? true)
+&lt; X-Liberator-Trace: :decision (:if-match-exists? nil)
+&lt; X-Liberator-Trace: :decision (:if-unmodified-since-exists? nil)
+&lt; X-Liberator-Trace: :decision (:if-none-match-exists? nil)
+&lt; X-Liberator-Trace: :decision (:if-modified-since-exists? nil)
+&lt; X-Liberator-Trace: :decision (:method-delete? false)
+&lt; X-Liberator-Trace: :decision (:method-patch? false)
+&lt; X-Liberator-Trace: :decision (:post-to-existing? false)
+&lt; X-Liberator-Trace: :decision (:put-to-existing? false)
+&lt; X-Liberator-Trace: :decision (:multiple-representations? false)
+&lt; X-Liberator-Trace: :handler (:handle-ok)
+&lt; X-Liberator-Trace: :handler (:handle-exception "(default implementation)")
+&lt; Link: &lt;//x-liberator/requests/kq42j&gt;; rel=x-liberator-trace
+&lt; X-Liberator-Trace-Id: kq42j
+&lt; Content-Type: text/plain;charset=ISO-8859-1
+&lt; Content-Length: 22
+&lt; Server: Jetty(7.6.8.v20121106)
+&lt;
+Internal server error.
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-21" class="outline-2">
+<h2 id="sec-21">Let's install that handler</h2>
+<div class="outline-text-2" id="text-21">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:allowed-methods</span> [<span style="color: #e67e22;">:get</span> <span style="color: #e67e22;">:post</span>]
+  <span style="color: #e67e22;">:handle-exception</span> (<span style="color: #d98c10;">fn</span> [context]
+                      (println <span style="color: #0a74b9;">"EX:"</span> (<span style="color: #e67e22;">:exception</span> context)))
+  <span style="color: #e67e22;">:post!</span> (<span style="color: #d98c10;">fn</span> [context]
+           (<span style="color: #d98c10;">let</span> [body (<span style="color: #2492db;">json</span>/read-str (slurp (get-in context [<span style="color: #e67e22;">:request</span> <span style="color: #e67e22;">:body</span>])))]
+             (add-user (read-database) body)))
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context]
+               (find-all-users (read-database))))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+EX: #&lt;IllegalArgumentException java.lang.IllegalArgumentException: No implementation of method: :as-response of protocol: #'liberator.representation/Representation found for class: java.util.HashSet&gt;
+
+FAIL "listing users" at (core_test.clj:14)
+    Expected: 200
+      Actual: 500
+
+FAIL "listing users" at (core_test.clj:15)
+    Expected: "{}"
+      Actual: ""
+{:db-before datomic.db.Db@6af93a79, :db-after datomic.db.Db@a7b28fb2, :tx-data #&lt;ArrayList [datomic.db.Datum@f500ab8a, datomic.db.Datum@be9582b7, datomic.db.Datum@68a2cb03]&gt;, :tempids {-9223350046623220349 17592186045418}}
+EX: #&lt;IllegalArgumentException java.lang.IllegalArgumentException: No implementation of method: :as-response of protocol: #'liberator.representation/Representation found for class: java.util.HashSet&gt;
+
+FAIL "adding and listing a user" at (core_test.clj:24)
+    Expected: 200
+      Actual: 500
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: ""
+FAILURE: 4 checks failed.  (But 1 succeeded.)
+[Completed at 08:13:42]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-22" class="outline-2">
+<h2 id="sec-22">Let's avoid that for now.</h2>
+<div class="outline-text-2" id="text-22">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:allowed-methods</span> [<span style="color: #e67e22;">:get</span> <span style="color: #e67e22;">:post</span>]
+  <span style="color: #e67e22;">:handle-exception</span> (<span style="color: #d98c10;">fn</span> [context]
+                      (println <span style="color: #0a74b9;">"EX:"</span> (<span style="color: #e67e22;">:exception</span> context)))
+  <span style="color: #e67e22;">:post!</span> (<span style="color: #d98c10;">fn</span> [context]
+           (<span style="color: #d98c10;">let</span> [body (<span style="color: #2492db;">json</span>/read-str (slurp (get-in context [<span style="color: #e67e22;">:request</span> <span style="color: #e67e22;">:body</span>])))]
+             (add-user (read-database) body)))
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context]
+               (<span style="color: #d98c10;">let</span> [entity-ids (find-all-users (read-database))]
+                 (println entity-ids)
+                 {})))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+#&lt;HashSet []&gt;
+#&lt;HashSet [[17592186045418]]&gt;
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 1 check failed.  (But 4 succeeded.)
+[Completed at 08:16:21]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-23" class="outline-2">
+<h2 id="sec-23">Find the entities for the given IDs</h2>
+<div class="outline-text-2" id="text-23">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:allowed-methods</span> [<span style="color: #e67e22;">:get</span> <span style="color: #e67e22;">:post</span>]
+  <span style="color: #e67e22;">:handle-exception</span> (<span style="color: #d98c10;">fn</span> [context]
+                      (println <span style="color: #0a74b9;">"EX:"</span> (<span style="color: #e67e22;">:exception</span> context)))
+  <span style="color: #e67e22;">:post!</span> (<span style="color: #d98c10;">fn</span> [context]
+           (<span style="color: #d98c10;">let</span> [body (<span style="color: #2492db;">json</span>/read-str (slurp (get-in context [<span style="color: #e67e22;">:request</span> <span style="color: #e67e22;">:body</span>])))]
+             (add-user (read-database) body)))
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context]
+               (<span style="color: #d98c10;">let</span> [database (read-database)
+                     entity-ids (find-all-users database)
+                     entities (map (<span style="color: #d98c10;">fn</span> [[entity-id]] (<span style="color: #2492db;">peer</span>/entity database entity-id))
+                                   entity-ids)]
+                 (println entities)
+                 {})))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+()
+({:db/id 17592186045418})
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "{}"
+FAILURE: 1 check failed.  (But 4 succeeded.)
+[Completed at 08:30:32]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-24" class="outline-2">
+<h2 id="sec-24">Convert them to maps!</h2>
+<div class="outline-text-2" id="text-24">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:allowed-methods</span> [<span style="color: #e67e22;">:get</span> <span style="color: #e67e22;">:post</span>]
+  <span style="color: #e67e22;">:handle-exception</span> (<span style="color: #d98c10;">fn</span> [context]
+                      (println <span style="color: #0a74b9;">"EX:"</span> (<span style="color: #e67e22;">:exception</span> context)))
+  <span style="color: #e67e22;">:post!</span> (<span style="color: #d98c10;">fn</span> [context]
+           (<span style="color: #d98c10;">let</span> [body (<span style="color: #2492db;">json</span>/read-str (slurp (get-in context [<span style="color: #e67e22;">:request</span> <span style="color: #e67e22;">:body</span>])))]
+             (add-user (read-database) body)))
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context]
+               (<span style="color: #d98c10;">let</span> [database (read-database)
+                     entity-ids (find-all-users database)
+                     entities (map (<span style="color: #d98c10;">fn</span> [[entity-id]] (<span style="color: #2492db;">peer</span>/entity database entity-id))
+                                   entity-ids)
+                     users (map (<span style="color: #d98c10;">fn</span> [entity] {(<span style="color: #e67e22;">:user/id</span> entity) {<span style="color: #e67e22;">:nick</span> (<span style="color: #e67e22;">:user/nick</span> entity)}})
+                                entities)]
+                 users)))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+
+FAIL "listing users" at (core_test.clj:15)
+    Expected: "{}"
+      Actual: "[]"
+
+FAIL "adding and listing a user" at (core_test.clj:25)
+    Expected: "{\"1\":{\"nick\":\"hans\"}}"
+      Actual: "[{\"1\":{\"nick\":\"hans\"}}]"
+FAILURE: 2 checks failed.  (But 3 succeeded.)
+[Completed at 08:53:52]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-25" class="outline-2">
+<h2 id="sec-25">Merge!</h2>
+<div class="outline-text-2" id="text-25">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defresource</span> <span style="color: #2492db;">users-resource</span>
+  <span style="color: #e67e22;">:available-media-types</span> [<span style="color: #0a74b9;">"application/json"</span>]
+  <span style="color: #e67e22;">:allowed-methods</span> [<span style="color: #e67e22;">:get</span> <span style="color: #e67e22;">:post</span>]
+  <span style="color: #e67e22;">:handle-exception</span> (<span style="color: #d98c10;">fn</span> [context]
+                      (println <span style="color: #0a74b9;">"EX:"</span> (<span style="color: #e67e22;">:exception</span> context)))
+  <span style="color: #e67e22;">:post!</span> (<span style="color: #d98c10;">fn</span> [context]
+           (<span style="color: #d98c10;">let</span> [body (<span style="color: #2492db;">json</span>/read-str (slurp (get-in context [<span style="color: #e67e22;">:request</span> <span style="color: #e67e22;">:body</span>])))]
+             (add-user (read-database) body)))
+  <span style="color: #e67e22;">:handle-ok</span> (<span style="color: #d98c10;">fn</span> [context]
+               (<span style="color: #d98c10;">let</span> [database (read-database)
+                     entity-ids (find-all-users database)
+                     entities (map (<span style="color: #d98c10;">fn</span> [[entity-id]] (<span style="color: #2492db;">peer</span>/entity database entity-id))
+                                   entity-ids)
+                     users (map (<span style="color: #d98c10;">fn</span> [entity] {(<span style="color: #e67e22;">:user/id</span> entity) {<span style="color: #e67e22;">:nick</span> (<span style="color: #e67e22;">:user/nick</span> entity)}})
+                                entities)]
+                 (into {} users))))
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-text">Loading (meetup-users.core meetup-users.core-test)
+All checks (5) succeeded.
+[Completed at 08:55:40]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-26" class="outline-2">
+<h2 id="sec-26">Liberator</h2>
+<div class="outline-text-2" id="text-26">
+
+<div class="figure">
+<p><img src="./2023491.png" alt="2023491.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li><a href="http://clojure-liberator.github.io/liberator/">http://clojure-liberator.github.io/liberator/</a>
+</li>
+<li>Context of a request
+</li>
+<li>Decision and action functions
+</li>
+<li>Debugging: graph or header response
+<a href="http://clojure-liberator.github.io/liberator/tutorial/decision-graph.html">http://clojure-liberator.github.io/liberator/tutorial/decision-graph.html</a>
+
+
+<div class="figure">
+<p><img src="./decision-graph.png" alt="decision-graph.png" />
+</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-27" class="outline-2">
+<h2 id="sec-27">Datomic</h2>
+<div class="outline-text-2" id="text-27">
+
+<div class="figure">
+<p><img src="./index-impl-small.png" alt="index-impl-small.png" />
+</p>
+</div>
+
+<ul class="org-ul">
+<li>Collection of entities (collection of attributes)
+</li>
+<li>In-memory, blobs stored in datastores
+</li>
+<li>Immutable - one database view per read
+</li>
+<li>Timestamps of transactions define version - Single transactor defining timestamps
+</li>
+<li>Queries are data
+</li>
+<li>Multiple indexes: EAVT, AEVT, AVET, VAET
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-28" class="outline-2">
+<h2 id="sec-28">Index example</h2>
+<div class="outline-text-2" id="text-28">
+<div class="org-src-container">
+
+<pre class="src src-clojure">(<span style="color: #d98c10;">defn</span> <span style="color: #2492db;">find-last-pop</span> [database]
+  (<span style="color: #d98c10;">let</span> [last-pop-time-attribute (last (<span style="color: #2492db;">peer</span>/datoms database <span style="color: #e67e22;">:avet</span> <span style="color: #e67e22;">:value/pop-time</span>))
+        last-pop (<span style="color: #e67e22;">:value/content</span> (<span style="color: #2492db;">peer</span>/entity database (<span style="color: #e67e22;">:e</span> last-pop-time-attribute)))]
+    last-pop))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-29" class="outline-2">
+<h2 id="sec-29">References</h2>
+<div class="outline-text-2" id="text-29">
+<p>
+Tech:
+</p>
+<ul class="org-ul">
+<li><a href="http://www.datomic.com/">http://www.datomic.com/</a>
+</li>
+<li><a href="http://clojure.org/">http://clojure.org/</a>
+</li>
+<li><a href="http://clojure-liberator.github.io/liberator/">http://clojure-liberator.github.io/liberator/</a>
+</li>
+</ul>
+
+<p>
+Further reading:
+</p>
+<ul class="org-ul">
+<li><a href="http://docs.datomic.com/tutorial.html">http://docs.datomic.com/tutorial.html</a>
+</li>
+<li><a href="http://docs.datomic.com/query.html">http://docs.datomic.com/query.html</a>
+</li>
+<li><a href="http://clojure-liberator.github.io/liberator/tutorial/">http://clojure-liberator.github.io/liberator/tutorial/</a>
+</li>
+<li><a href="http://docs.datomic.com/indexes.html">http://docs.datomic.com/indexes.html</a>
+</li>
+</ul>
+
+<p>
+Images:
+</p>
+<ul class="org-ul">
+<li><a href="http://docs.datomic.com/index-impl.png">http://docs.datomic.com/index-impl.png</a>
+</li>
+<li><a href="http://verse.aasemoon.com/images/thumb/5/51/Clojure-Logo.png/250px-Clojure-Logo.png">http://verse.aasemoon.com/images/thumb/5/51/Clojure-Logo.png/250px-Clojure-Logo.png</a>
+</li>
+<li><a href="https://avatars3.githubusercontent.com/u/2023491?v=2&s=200">https://avatars3.githubusercontent.com/u/2023491?v=2&s=200</a>
+</li>
+<li><a href="https://my.datomic.com/img/logo-clean.png">https://my.datomic.com/img/logo-clean.png</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Felix Geller</p>
+<p class="date">Created: 2014-08-28 Thu 09:36</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.4 (<a href="http://orgmode.org">Org</a> mode 8.2.7c)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
